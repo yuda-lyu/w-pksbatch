@@ -1,0 +1,28 @@
+{
+  "name": "w-pksbatch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.26.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-standard": "^4.1.0",
+    "eslint-plugin-vue": "^7.9.0",
+    "iconv-lite": "^0.6.2",
+    "isutf8": "^3.1.1",
+    "lodash": "^4.17.21",
+    "vue-eslint-parser": "^7.6.0",
+    "wsemi": "^1.5.77"
+  }
+}
