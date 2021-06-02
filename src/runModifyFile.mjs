@@ -26,7 +26,7 @@ function runModifyFile() {
 
 
             // //fn, 專案資料夾下的script.txt
-            // let fn = path(fdOld, 'script.txt')
+            // let fn = path.resove(fdOld, 'script.txt')
             // //deleteLineInFile(fn, '#npm update', { log: true })
             // replaceLineInFile(fn, (line) => {
             //     let find = `--experimental-modules`
@@ -44,7 +44,7 @@ function runModifyFile() {
             //     return fn.indexOf('.rollup') >= 0
             // })
             // fns = _.map(fns, (fn) => {
-            //     return path(fdNew, fn)
+            //     return path.resove(fdNew, fn)
             // })
             // //deleteLineInFiles(fns, `import buble from 'rollup-plugin-buble'`, { log: true })
             // //deleteLineInFiles(fns, `//buble(),`, { log: true })
@@ -69,7 +69,7 @@ function runModifyFile() {
 
 
             //fn, 專案資料夾下的package.json
-            let fn = path(fdNew, 'package.json')
+            let fn = path.resove(fdNew, 'package.json')
             replaceLineInFile(fn, (line) => {
                 // let find = `"test": "mocha --require @babel/register",`
                 // let repl = `"test": "./node_modules/.bin/mocha --require @babel/register",` //node14之前得要用./node_modules/.bin執行

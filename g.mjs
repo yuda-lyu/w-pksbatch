@@ -6,8 +6,8 @@ import runGitCommit from './src/runGitCommit.mjs'
 
 
 // runUpdatePks()
-runModifyFile()
-// runOverwriteFile()
+// runModifyFile()
+runOverwriteFile()
 // runDeleteFile()
 // runGitCommit()
 

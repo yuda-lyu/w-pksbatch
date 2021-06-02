@@ -20,7 +20,7 @@ function runGitCommit() {
         scpReplace: (fdOld, fdNew, scp) => {
 
             //fn
-            let fn = path(fdOld, 'script.txt')
+            let fn = path.resove(fdOld, 'script.txt')
 
             //check
             if (fs.existsSync(fn)) {

@@ -22,7 +22,7 @@ function runDeleteFile() {
 
 
             //fnSrc, 刪除.babelrc
-            let fnSrc = path(fdNew, '.babelrc')
+            let fnSrc = path.resove(fdNew, '.babelrc')
             deleteFile(fnSrc, { log: true })
 
 
