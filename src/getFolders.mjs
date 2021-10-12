@@ -33,6 +33,7 @@ function getFolders() {
     //     //...
     // ]
 
+    // console.log('fds', fds)
     return fds
 }
 

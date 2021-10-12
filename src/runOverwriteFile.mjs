@@ -28,10 +28,10 @@ function runOverwriteFile() {
             // overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
 
 
-            //fnSrc, 覆蓋.eslintrc.js
-            let fnSrc = '.eslintrc.js'
-            let fnTar = path.resolve(fdNew, fnSrc)
-            overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
+            // //fnSrc, 覆蓋.eslintrc.js
+            // let fnSrc = '.eslintrc.js'
+            // let fnTar = path.resolve(fdNew, fnSrc)
+            // overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
 
 
             // //fnSrc, 覆蓋.babelrc
@@ -56,6 +56,12 @@ function runOverwriteFile() {
             // let fnSrc = `./.github/workflows/ci-test.yml`
             // let fnTar = path.resolve(fdNew, fnSrc)
             // overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
+
+
+            //fnSrc, 覆蓋SECURITY.md
+            let fnSrc = 'SECURITY.md'
+            let fnTar = path.resolve(fdNew, fnSrc)
+            overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
 
 
         },
