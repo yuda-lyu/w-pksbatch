@@ -28,10 +28,10 @@ function getFolders() {
     // fds = _.filter(fds, (v) => {
     //     return v.indexOf('開源-JS-105-3-w-audioplayer-vue') < 0
     // })
-    // fds = [
-    //     'D:\\開源-JS-002-1-wsemi',
-    //     //...
-    // ]
+    fds = [
+        'D:\\開源-JS-002-1-wsemi',
+        //...
+    ]
 
     // console.log('fds', fds)
     return fds

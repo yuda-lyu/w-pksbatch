@@ -58,9 +58,16 @@ function runOverwriteFile() {
             // overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
 
 
-            //fnSrc, 覆蓋SECURITY.md
-            let fnSrc = 'SECURITY.md'
-            let fnTar = path.resolve(fdNew, fnSrc)
+            // //fnSrc, 覆蓋SECURITY.md
+            // let fnSrc = 'SECURITY.md'
+            // let fnTar = path.resolve(fdNew, fnSrc)
+            // overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
+
+
+            //fnSrc, 覆蓋ci-test.yml
+            let fnSrc = 'ci-test.yml'
+            let fnTar = path.resolve(fdNew, `.github/workflows`, fnSrc)
+            console.log('fnTar', fnTar)
             overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
 
 
