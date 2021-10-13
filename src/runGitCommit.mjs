@@ -19,22 +19,36 @@ function runGitCommit() {
         fdReplace: getFdReplace,
         scpReplace: (fdOld, fdNew, scp) => {
 
-            //fn
-            let fn = path.resove(fdOld, 'script.txt')
+            // //使用script.txt內指令
+            // if (true) {
 
-            //check
-            if (fs.existsSync(fn)) {
+            //     //fn
+            //     let fn = path.resove(fdOld, 'script.txt')
 
-                //讀取原本script
-                scp = fs.readFileSync(fn, 'utf8')
+            //     //check
+            //     if (fs.existsSync(fn)) {
 
-                //添加更新pks指令
+            //         //讀取原本script
+            //         scp = fs.readFileSync(fn, 'utf8')
+
+            //         //添加更新pks指令
+            //         scp = `
+            //         ncu -u
+            //         npm i
+            //         npm audit fix
+            //         ` + scp
+
+            //     }
+
+            // }
+
+            //直接給予指令
+            if (true) {
                 scp = `
-                ncu -u
-                npm i
-                npm audit fix
-                ` + scp
-
+                git add .  -A
+                git commit -m 'modify: ci-test.yml'
+                git push origin master:master
+                `
             }
 
             return scp
@@ -42,23 +56,23 @@ function runGitCommit() {
         cmdReplace: (v) => {
             let c = ''
 
-            //commit
-            c = `git commit -m`
-            if (v.indexOf(c) >= 0) {
-                v = `git commit -m 'auto update: pks'`
-            }
+            // //commit
+            // c = `git commit -m`
+            // if (v.indexOf(c) >= 0) {
+            //     v = `git commit -m 'auto update: pks'`
+            // }
 
-            //genVersion
-            c = `#node --experimental-modules --es-module-specifier-resolution=node toolg/addVersion.mjs`
-            if (v.indexOf(c) >= 0) {
-                v = `node --experimental-modules --es-module-specifier-resolution=node toolg/addVersion.mjs`
-            }
+            // //genVersion
+            // c = `#node --experimental-modules --es-module-specifier-resolution=node toolg/addVersion.mjs`
+            // if (v.indexOf(c) >= 0) {
+            //     v = `node --experimental-modules --es-module-specifier-resolution=node toolg/addVersion.mjs`
+            // }
 
-            //publish
-            c = `#npm publish`
-            if (v.indexOf(c) >= 0) {
-                v = `npm publish`
-            }
+            // //publish
+            // c = `#npm publish`
+            // if (v.indexOf(c) >= 0) {
+            //     v = `npm publish`
+            // }
 
             return v
         },
