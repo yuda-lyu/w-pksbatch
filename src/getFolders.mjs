@@ -5,7 +5,7 @@ import w from 'wsemi'
 function getFolders() {
 
     //pfd
-    let pfd = 'D:\\'
+    let pfd = 'D:\\- 006 -        開源\\'
 
     //fds
     let fds = []

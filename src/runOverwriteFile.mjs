@@ -40,10 +40,10 @@ function runOverwriteFile() {
             // overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
 
 
-            // //fnSrc, 覆蓋babel.config.js
-            // let fnSrc = 'babel.config.js'
-            // let fnTar = path.resolve(fdNew, fnSrc)
-            // overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
+            //fnSrc, 覆蓋babel.config.js
+            let fnSrc = 'babel.config.js'
+            let fnTar = path.resolve(fdNew, fnSrc)
+            overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
 
 
             // //fnSrc, 覆蓋.travis.yml
@@ -64,11 +64,23 @@ function runOverwriteFile() {
             // overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
 
 
-            //fnSrc, 覆蓋ci-test.yml
-            let fnSrc = 'ci-test.yml'
-            let fnTar = path.resolve(fdNew, `.github/workflows`, fnSrc)
-            console.log('fnTar', fnTar)
-            overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
+            // //fnSrc, 覆蓋ci-test.yml
+            // let fnSrc = 'ci-test.yml'
+            // let fnTar = path.resolve(fdNew, `.github/workflows`, fnSrc)
+            // console.log('fnTar', fnTar)
+            // overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
+
+
+            // //fnSrc, 覆蓋LICENSE
+            // let fnSrc = 'LICENSE'
+            // let fnTar = path.resolve(fdNew, fnSrc)
+            // overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
+
+
+            // //fnSrc, 覆蓋.jsdoc
+            // let fnSrc = '.jsdoc'
+            // let fnTar = path.resolve(fdNew, fnSrc)
+            // overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
 
 
         },
