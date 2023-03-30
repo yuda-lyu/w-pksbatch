@@ -20,7 +20,7 @@ function runOverwriteFile() {
         fdReplace: getFdReplace,
         fdHook: (fdOld, fdNew) => {
             // console.log('fdOld', fdOld)
-            // console.log('fdNew', fdNew)
+            console.log('fdNew', fdNew)
 
             // //fnSrc, 覆蓋.eslintignore
             // let fnSrc = '.eslintignore'
@@ -53,8 +53,8 @@ function runOverwriteFile() {
 
 
             //fnSrc, 覆蓋./.github/workflows/ci-test.yml
-            let fnSrc = `./.github/workflows/ci-test.yml`
-            let fnTar = path.resolve(fdNew, fnSrc)
+            let fnSrc = `ci-test.yml`
+            let fnTar = path.resolve(fdNew, `./.github/workflows/${fnSrc}`)
             overwriteFile(fnSrc, fnTar, { log: true, needExistTar: false })
 
 
