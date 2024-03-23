@@ -33,7 +33,7 @@ function runUpdatePks() {
     let opt = {
         log: true,
         fdReplace: getFdReplace,
-        // scpReplace: (fdOld, fdNew, scp) => {
+        // scpReplace: (fdShell, fdPrj, scp) => {
         //     return scp
         // },
         // cmdReplace: (v) => {

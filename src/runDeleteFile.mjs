@@ -18,11 +18,11 @@ function runDeleteFile() {
         log: true,
         needExistTar: false,
         fdReplace: getFdReplace,
-        fdHook: (fdOld, fdNew) => {
+        fdHook: (fdShell, fdPrj) => {
 
 
             //fnSrc, 刪除.babelrc
-            let fnSrc = path.resove(fdNew, '.babelrc')
+            let fnSrc = path.resolve(fdPrj, '.babelrc')
             deleteFile(fnSrc, { log: true })
 
 

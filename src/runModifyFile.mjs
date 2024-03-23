@@ -22,11 +22,11 @@ function runModifyFile() {
     let opt = {
         log: true,
         fdReplace: getFdReplace,
-        fdHook: (fdOld, fdNew) => {
+        fdHook: (fdShell, fdPrj) => {
 
 
-            // //fn, 專案資料夾下的script.txt
-            // let fn = path.resove(fdOld, 'script.txt')
+            // //fn, 存放專案資料夾下的script.txt
+            // let fn = path.resolve(fdShell, 'script.txt')
             // //deleteLineInFile(fn, '#npm update', { log: true })
             // replaceLineInFile(fn, (line) => {
             //     let find = `--experimental-modules`
@@ -38,13 +38,23 @@ function runModifyFile() {
             // }, { log: true })
 
 
+            //fn, 存放專案資料夾下的script.txt移至專案資料夾內
+            let fnSrc = path.resolve(fdShell, 'script.txt')
+            let fnTar = path.resolve(fdPrj, 'script.txt')
+            if (w.fsIsFile(fnSrc)) {
+                try {
+                    w.fsRenameFile(fnSrc, fnTar)
+                }
+                catch (err) {}
+            }
+
             // //fns, 套件資料夾下全部rollup檔案
-            // let fns = w.fsGetFilesInFolder(fdNew)
+            // let fns = w.fsGetFilesInFolder(fdPrj)
             // fns = _.filter(fns, (fn) => {
             //     return fn.indexOf('.rollup') >= 0
             // })
             // fns = _.map(fns, (fn) => {
-            //     return path.resove(fdNew, fn)
+            //     return path.resolve(fdPrj, fn)
             // })
             // //deleteLineInFiles(fns, `import buble from 'rollup-plugin-buble'`, { log: true })
             // //deleteLineInFiles(fns, `//buble(),`, { log: true })
@@ -68,22 +78,22 @@ function runModifyFile() {
             // }, { log: true })
 
 
-            //fn, 專案資料夾下的package.json
-            let fn = path.resove(fdNew, 'package.json')
-            replaceLineInFile(fn, (line) => {
-                // let find = `"test": "mocha --require @babel/register",`
-                // let repl = `"test": "./node_modules/.bin/mocha --require @babel/register",` //node14之前得要用./node_modules/.bin執行
-                // let find = `"test": "./node_modules/.bin/mocha --require @babel/register",`
-                // let repl = `"test": "mocha --parallel --timeout 60000 --require @babel/register",` //node15之後改回來自動偵測./node_modules/.bin執行
-                // let find = `"test": "./node_modules/.bin/mocha --timeout 60000 --require @babel/register",`
-                // let repl = `"test": "mocha --parallel --timeout 60000 --experimental-modules --es-module-specifier-resolution=node",`
-                let find = `"test": "mocha --parallel --timeout 60000 --require @babel/register",`
-                let repl = `"test": "mocha --parallel --timeout 60000 --experimental-modules --es-module-specifier-resolution=node",`
-                if (line.indexOf(find) >= 0) {
-                    line = line.replace(find, repl)
-                }
-                return line
-            }, { log: true })
+            // //fn, 專案資料夾下的package.json
+            // let fn = path.resolve(fdPrj, 'package.json')
+            // replaceLineInFile(fn, (line) => {
+            //     // let find = `"test": "mocha --require @babel/register",`
+            //     // let repl = `"test": "./node_modules/.bin/mocha --require @babel/register",` //node14之前得要用./node_modules/.bin執行
+            //     // let find = `"test": "./node_modules/.bin/mocha --require @babel/register",`
+            //     // let repl = `"test": "mocha --parallel --timeout 60000 --require @babel/register",` //node15之後改回來自動偵測./node_modules/.bin執行
+            //     // let find = `"test": "./node_modules/.bin/mocha --timeout 60000 --require @babel/register",`
+            //     // let repl = `"test": "mocha --parallel --timeout 60000 --experimental-modules --es-module-specifier-resolution=node",`
+            //     let find = `"test": "mocha --parallel --timeout 60000 --require @babel/register",`
+            //     let repl = `"test": "mocha --parallel --timeout 60000 --experimental-modules --es-module-specifier-resolution=node",`
+            //     if (line.indexOf(find) >= 0) {
+            //         line = line.replace(find, repl)
+            //     }
+            //     return line
+            // }, { log: true })
 
 
         },

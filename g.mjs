@@ -7,8 +7,8 @@ import runModEs6Import from './src/runModEs6Import.mjs'
 
 
 // runUpdatePks()
-// runModifyFile()
-runOverwriteFile()
+runModifyFile()
+// runOverwriteFile()
 // runDeleteFile()
 // runGitCommit()
 // runModEs6Import()

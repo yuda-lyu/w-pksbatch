@@ -17,13 +17,13 @@ function runGitCommit() {
     let opt = {
         log: true,
         fdReplace: getFdReplace,
-        scpReplace: (fdOld, fdNew, scp) => {
+        scpReplace: (fdShell, fdPrj, scp) => {
 
             // //使用script.txt內指令
             // if (true) {
 
             //     //fn
-            //     let fn = path.resove(fdOld, 'script.txt')
+            //     let fn = path.resolve(fdShell, 'script.txt')
 
             //     //check
             //     if (fs.existsSync(fn)) {
