@@ -1,5 +1,5 @@
 import fs from 'fs'
-import _ from 'lodash'
+import _ from 'lodash-es'
 
 
 function overwriteFile(fnSrc, fnTar, opt = {}) {

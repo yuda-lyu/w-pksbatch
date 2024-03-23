@@ -1,5 +1,5 @@
 import path from 'path'
-import _ from 'lodash'
+import _ from 'lodash-es'
 import w from 'wsemi'
 import dealFolders from './dealFolders.mjs'
 import getFolders from './getFolders.mjs'
