@@ -99,27 +99,71 @@ let dealLodashImport = (fp) => {
             //先去除頭尾空白
             let t = _.trim(line)
 
-            //b, 偵測「import range from 'lodash-es/range'」
+            //偵測import
             let bimp1 = w.strleft(t, 7) === 'import '
             let bimp2 = w.strleft(t, 9) === '//import '
             let bimp3 = w.strleft(t, 10) === '// import '
             let bimp = bimp1 || bimp2 || bimp3
+
+            //check
+            if (!bimp) {
+                return line
+            }
+
+            //偵測套件
+            let bsem = t.indexOf('wsemi/src/') > 0
             let blds = t.indexOf('lodash-es/') > 0
             let bcpo = t.indexOf('crypto-js/') > 0
-            let bneed = blds || bcpo
-            let bdone = w.strright(t, 4) !== `.js'`
-            let b = bimp && bneed && bdone
+            let bpks = bsem || blds || bcpo
 
-            if (b) {
-                rp = true
-
-                //去除末尾「'」
-                t = w.strdelright(t, 1)
-
-                //添加「.js'」
-                line = `${t}.js'`
-
+            //check
+            if (!bpks) {
+                return line
             }
+
+            //偵測是否待修改
+            let bckmjs = bsem
+            let bckjs = blds || bcpo
+            let cext = ''
+            if (bckmjs) {
+                cext = w.strright(t, 5)
+            }
+            else if (bckjs) {
+                cext = w.strright(t, 4)
+            }
+            let bneed = false
+            if (bckmjs) {
+                bneed = cext !== `.mjs'`
+            }
+            else if (bckjs) {
+                bneed = cext !== `.js'`
+            }
+
+            //check
+            if (!bneed) {
+                return line
+            }
+
+            //須修改
+            rp = true
+
+            //去除末尾「'」
+            t = w.strdelright(t, 1)
+
+            //添加
+            let line_ = line
+            if (bckmjs) {
+                line = `${t}.mjs'`
+            }
+            else if (bckjs) {
+                line = `${t}.js'`
+            }
+            // console.log('bckmjs', bckmjs)
+            // console.log('bckjs', bckjs)
+            // console.log('cext', cext)
+            // console.log('bneed', bneed)
+            // console.log('line(ori)', line_)
+            // console.log('line(mod)', line)
 
             return line
         })

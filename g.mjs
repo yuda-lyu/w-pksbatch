@@ -7,11 +7,11 @@ import runModEs6Import from './src/runModEs6Import.mjs'
 
 
 // runUpdatePks()
-runModifyFile()
+// runModifyFile()
 // runOverwriteFile()
 // runDeleteFile()
 // runGitCommit()
-// runModEs6Import()
+runModEs6Import()
 
 
 //node --experimental-modules --es-module-specifier-resolution=node g.mjs
