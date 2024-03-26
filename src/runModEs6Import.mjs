@@ -61,7 +61,7 @@ let coreMjs = (fd) => {
     //取專案資料夾下指定資料夾下的mjs檔
 
     //vfs
-    let vfs = w.fsTreeFolder(fd)
+    let vfs = w.fsTreeFolder(fd, null)
 
     //filter
     vfs = _.filter(vfs, null)
@@ -200,6 +200,13 @@ function runModEs6Import() {
         return r
     })
     // vfps = [vfps[1]]
+    // console.log('vfps', vfps)
+
+    //指定計畫資料夾
+    // vfps = [{
+    //     name: 'cgsmdb4',
+    //     path: 'D:\\計畫-高效率土壤液化分析系統-2-安家固園(1至5期)\\cgsmdb4',
+    // }]
     // console.log('vfps', vfps)
 
     _.each(vfps, (vfp) => {
