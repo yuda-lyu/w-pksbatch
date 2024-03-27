@@ -63,9 +63,9 @@ function runGitCommit() {
             // }
 
             // //genVersion
-            // c = `#node --experimental-modules --es-module-specifier-resolution=node toolg/addVersion.mjs`
+            // c = `#node --experimental-modules toolg/addVersion.mjs`
             // if (v.indexOf(c) >= 0) {
-            //     v = `node --experimental-modules --es-module-specifier-resolution=node toolg/addVersion.mjs`
+            //     v = `node --experimental-modules toolg/addVersion.mjs`
             // }
 
             // //publish

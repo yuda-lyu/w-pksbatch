@@ -30,7 +30,7 @@ function runModifyFile() {
             // //deleteLineInFile(fn, '#npm update', { log: true })
             // replaceLineInFile(fn, (line) => {
             //     let find = `--experimental-modules`
-            //     let repl = `--experimental-modules --es-module-specifier-resolution=node`
+            //     let repl = `--experimental-modules`
             //     if (line.indexOf(find) >= 0 && line.indexOf(repl) < 0) {
             //         line = line.replace(find, repl)
             //     }
@@ -86,9 +86,9 @@ function runModifyFile() {
             //     // let find = `"test": "./node_modules/.bin/mocha --require @babel/register",`
             //     // let repl = `"test": "mocha --parallel --timeout 60000 --require @babel/register",` //node15之後改回來自動偵測./node_modules/.bin執行
             //     // let find = `"test": "./node_modules/.bin/mocha --timeout 60000 --require @babel/register",`
-            //     // let repl = `"test": "mocha --parallel --timeout 60000 --experimental-modules --es-module-specifier-resolution=node",`
+            //     // let repl = `"test": "mocha --parallel --timeout 60000 --experimental-modules",`
             //     let find = `"test": "mocha --parallel --timeout 60000 --require @babel/register",`
-            //     let repl = `"test": "mocha --parallel --timeout 60000 --experimental-modules --es-module-specifier-resolution=node",`
+            //     let repl = `"test": "mocha --parallel --timeout 60000 --experimental-modules",`
             //     if (line.indexOf(find) >= 0) {
             //         line = line.replace(find, repl)
             //     }

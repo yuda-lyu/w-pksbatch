@@ -14,4 +14,4 @@ import runModEs6Import from './src/runModEs6Import.mjs'
 runModEs6Import()
 
 
-//node --experimental-modules --es-module-specifier-resolution=node g.mjs
+//node --experimental-modules g.mjs
