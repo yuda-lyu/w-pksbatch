@@ -208,22 +208,30 @@ function runModEs6Import() {
     // vfps = [vfps[1]]
     // console.log('vfps', vfps)
 
-    //指定計畫資料夾
-    vfps = [
-        // {
-        //     name: 'cgsmdb4',
-        //     path: 'D:\\計畫-高效率土壤液化分析系統-2-安家固園(1至5期)\\cgsmdb4',
-        // },
-        // {
-        //     name: 'rddmanager',
-        //     path: 'D:\\計畫-台電高放2-最終處置計畫資料庫系統-1-主系統\\rddmanager',
-        // },
-        {
-            name: 'rddmanager_perm',
-            path: 'D:\\計畫-台電高放2-最終處置計畫資料庫系統-3-權限系統\\rddmanager_perm',
-        },
-    ]
-    console.log('vfps', vfps)
+    // //指定計畫資料夾
+    // vfps = [
+    //     // {
+    //     //     name: 'cgsmdb4',
+    //     //     path: 'D:\\計畫-高效率土壤液化分析系統-2-安家固園(1至5期)\\cgsmdb4',
+    //     // },
+    //     // {
+    //     //     name: 'rddmanager',
+    //     //     path: 'D:\\計畫-台電高放2-最終處置計畫資料庫系統-1-主系統\\rddmanager',
+    //     // },
+    //     // {
+    //     //     name: 'rddmanager_perm',
+    //     //     path: 'D:\\計畫-台電高放2-最終處置計畫資料庫系統-3-權限系統\\rddmanager_perm',
+    //     // },
+    //     // {
+    //     //     name: 'liqproc',
+    //     //     path: 'D:\\計畫-高效率土壤液化分析系統-4-地震與監測數據取得與分析系統\\liqproc',
+    //     // },
+    //     // {
+    //     //     name: 'liqproc',
+    //     //     path: 'D:\\計畫-高效率土壤液化分析系統-5-即時液化分析與監測數據展示系統\\frliq',
+    //     // },
+    // ]
+    // console.log('vfps', vfps)
 
     _.each(vfps, (vfp) => {
         // console.log('vfp.name', vfp.name)
