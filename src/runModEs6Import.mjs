@@ -12,49 +12,72 @@ let coreFd = (fd) => {
     let vfs = w.fsTreeFolder(fd)
 
     //filter
-    vfs = _.filter(vfs, { isFolder: true })
+    let vfds = _.filter(vfs, { isFolder: true })
+    let vfns = _.filter(vfs, { isFolder: false })
     // console.log('vfs', vfs)
 
-    //不取「.」開頭
-    vfs = _.filter(vfs, (v) => {
-        let c = w.strleft(v.name, 1)
-        return c !== '.'
-    })
+    if (true) {
+        vfs = vfds
 
-    //不取「_」開頭
-    vfs = _.filter(vfs, (v) => {
-        let c = w.strleft(v.name, 1)
-        return c !== '_'
-    })
+        //不取「.」開頭
+        vfs = _.filter(vfs, (v) => {
+            let c = w.strleft(v.name, 1)
+            return c !== '.'
+        })
 
-    //不取「node_modules」
-    vfs = _.filter(vfs, (v) => {
-        return v.name !== 'node_modules'
-    })
+        //不取「_」開頭
+        vfs = _.filter(vfs, (v) => {
+            let c = w.strleft(v.name, 1)
+            return c !== '_'
+        })
 
-    //不取「dist」
-    vfs = _.filter(vfs, (v) => {
-        return v.name !== 'dist'
-    })
+        //不取「node_modules」
+        vfs = _.filter(vfs, (v) => {
+            return v.name !== 'node_modules'
+        })
 
-    //不取「docs」
-    vfs = _.filter(vfs, (v) => {
-        return v.name !== 'docs'
-    })
+        //不取「dist」
+        vfs = _.filter(vfs, (v) => {
+            return v.name !== 'dist'
+        })
 
-    //不取「examples」
-    vfs = _.filter(vfs, (v) => {
-        return v.name !== 'examples'
-    })
+        //不取「docs」
+        vfs = _.filter(vfs, (v) => {
+            return v.name !== 'docs'
+        })
 
-    vfs = _.map(vfs, (v) => {
-        return {
-            path: v.path,
-            name: v.name,
-        }
-    })
+        //不取「examples」
+        vfs = _.filter(vfs, (v) => {
+            return v.name !== 'examples'
+        })
 
-    return vfs
+        vfs = _.map(vfs, (v) => {
+            return {
+                path: v.path,
+                name: v.name,
+            }
+        })
+
+        vfds = vfs
+    }
+
+    if (true) {
+        vfs = vfns
+
+        vfs = _.map(vfs, (v) => {
+            return {
+                path: v.path,
+                name: v.name,
+            }
+        })
+
+        vfns = vfs
+    }
+
+    return {
+        vfds,
+        vfns,
+    }
 }
 
 let coreMjs = (fd) => {
@@ -234,11 +257,12 @@ function runModEs6Import() {
     // console.log('vfps', vfps)
 
     _.each(vfps, (vfp) => {
-        // console.log('vfp.name', vfp.name)
+        console.log('vfp.name', vfp.name)
 
         //coreFd
-        let vfds = coreFd(vfp.path)
+        let { vfds, vfns } = coreFd(vfp.path)
         // console.log('vfds', vfds)
+        // console.log('vfns', vfns)
 
         _.each(vfds, (vfd) => {
             // console.log('vfd.name', vfd.name)
@@ -254,6 +278,14 @@ function runModEs6Import() {
                 dealLodashImport(vf.path)
 
             })
+
+        })
+
+        _.each(vfns, (vfn) => {
+            // console.log('vfn.name', vfn.name)
+
+            //dealLodashImport
+            dealLodashImport(vfn.path)
 
         })
 
