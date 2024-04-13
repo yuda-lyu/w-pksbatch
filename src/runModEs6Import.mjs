@@ -92,8 +92,14 @@ let coreMjs = (fd) => {
 
     //取mjs
     vfs = _.filter(vfs, (v) => {
-        let c = w.strright(v.name, 4)
-        return c === '.mjs' || c === '.vue' //mjs或vue檔都要處理
+        // let c3 = w.strright(v.name, 3)
+        let c4 = w.strright(v.name, 4)
+        let b1 = c4 === '.mjs' //mjs檔要處理
+        let b2 = c4 === '.vue' //vue檔要處理
+        // let b3a = c3 === '.js'
+        // let b3b = v.name === 'main.js'
+        let b3 = v.name === 'main.js' //b3a && b3b  //main.js因vue2啟動為必要檔故要加入處理
+        return b1 || b2 || b3
     })
 
     vfs = _.map(vfs, (v) => {
@@ -250,7 +256,7 @@ function runModEs6Import() {
     //     //     path: 'D:\\計畫-高效率土壤液化分析系統-4-地震與監測數據取得與分析系統\\liqproc',
     //     // },
     //     // {
-    //     //     name: 'liqproc',
+    //     //     name: 'frliq',
     //     //     path: 'D:\\計畫-高效率土壤液化分析系統-5-即時液化分析與監測數據展示系統\\frliq',
     //     // },
     // ]
@@ -265,14 +271,14 @@ function runModEs6Import() {
         // console.log('vfns', vfns)
 
         _.each(vfds, (vfd) => {
-            // console.log('vfd.name', vfd.name)
+            // console.log('deal fd vfd.name', vfd.name)
 
             //coreMjs
             let vfs = coreMjs(vfd.path)
             // console.log('vfs', vfs)
 
             _.each(vfs, (vf) => {
-                // console.log('vf.name', vf.name)
+                // console.log('deal fdff: vf.name', vf.name, 'from:', vf.path)
 
                 //dealLodashImport
                 dealLodashImport(vf.path)
@@ -282,7 +288,7 @@ function runModEs6Import() {
         })
 
         _.each(vfns, (vfn) => {
-            // console.log('vfn.name', vfn.name)
+            // console.log('deal ff: vfn.name', vfn.name, 'from:', vfn.path)
 
             //dealLodashImport
             dealLodashImport(vfn.path)
