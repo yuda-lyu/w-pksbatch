@@ -148,7 +148,7 @@ let dealLodashImport = (fp) => {
             //偵測cjs lodash
             let bldsc = t.indexOf('lodash/') > 0
             if (bldsc) {
-                console.log('偵測仍使用cjs lodash')
+                console.log('偵測仍使用cjs lodash，須人工更換套件與取代loadsh至loadsh-es')
             }
 
             //check
@@ -237,30 +237,38 @@ function runModEs6Import() {
     // vfps = [vfps[1]]
     // console.log('vfps', vfps)
 
-    // //指定計畫資料夾
-    // vfps = [
-    //     // {
-    //     //     name: 'cgsmdb4',
-    //     //     path: 'D:\\計畫-高效率土壤液化分析系統-2-安家固園(1至5期)\\cgsmdb4',
-    //     // },
-    //     // {
-    //     //     name: 'rddmanager',
-    //     //     path: 'D:\\計畫-台電高放2-最終處置計畫資料庫系統-1-主系統\\rddmanager',
-    //     // },
-    //     // {
-    //     //     name: 'rddmanager_perm',
-    //     //     path: 'D:\\計畫-台電高放2-最終處置計畫資料庫系統-3-權限系統\\rddmanager_perm',
-    //     // },
-    //     // {
-    //     //     name: 'liqproc',
-    //     //     path: 'D:\\計畫-高效率土壤液化分析系統-4-地震與監測數據取得與分析系統\\liqproc',
-    //     // },
-    //     // {
-    //     //     name: 'frliq',
-    //     //     path: 'D:\\計畫-高效率土壤液化分析系統-5-即時液化分析與監測數據展示系統\\frliq',
-    //     // },
-    // ]
-    // console.log('vfps', vfps)
+    //指定計畫資料夾
+    vfps = [
+        // {
+        //     name: 'cgsmdb4',
+        //     path: 'D:\\計畫-高效率土壤液化分析系統-2-安家固園(1至5期)\\cgsmdb4',
+        // },
+        // {
+        //     name: 'rddmanager',
+        //     path: 'D:\\計畫-台電高放2-最終處置計畫資料庫系統-1-主系統\\rddmanager',
+        // },
+        // {
+        //     name: 'rddmanager_perm',
+        //     path: 'D:\\計畫-台電高放2-最終處置計畫資料庫系統-3-權限系統\\rddmanager_perm',
+        // },
+        {
+            name: 'soillique',
+            path: 'D:\\計畫-高效率土壤液化分析系統-1-液化分析系統(社內網)\\soillique',
+        },
+        // {
+        //     name: 'liqproc',
+        //     path: 'D:\\計畫-高效率土壤液化分析系統-4-地震與監測數據取得與分析系統\\liqproc',
+        // },
+        // {
+        //     name: 'frliq',
+        //     path: 'D:\\計畫-高效率土壤液化分析系統-5-即時液化分析與監測數據展示系統\\frliq',
+        // },
+        // {
+        //     name: 'gir2',
+        //     path: 'D:\\計畫-地工試驗數據整合系統-2-離岸風電系統2\\gir2',
+        // },
+    ]
+    console.log('vfps', vfps)
 
     _.each(vfps, (vfp) => {
         console.log('vfp.name', vfp.name)
