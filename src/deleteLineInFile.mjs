@@ -31,7 +31,7 @@ function deleteLineInFile(fn, deleteText, opt = {}) {
 
         //console
         if (opt.log === true) {
-            console.log('modify:: ' + fn)
+            console.log('modify: ' + fn)
         }
 
     }

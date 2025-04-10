@@ -14,7 +14,7 @@ function deleteFile(fnSrc, opt = {}) {
 
     //console
     if (opt.log === true) {
-        console.log('delete:: ' + fnSrc)
+        console.log('delete: ' + fnSrc)
     }
 
 }

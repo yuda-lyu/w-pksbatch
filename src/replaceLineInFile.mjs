@@ -34,7 +34,7 @@ function replaceLineInFile(fn, lineReplace, opt = {}) {
 
         //console
         if (opt.log === true) {
-            console.log('modify:: ' + fn)
+            console.log('modify: ' + fn)
         }
 
     }
