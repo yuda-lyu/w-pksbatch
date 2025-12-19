@@ -17,7 +17,7 @@ function getFolders() {
         return v.indexOf('開源-JS-') >= 0
     })
     fds = _.filter(fds, (v) => {
-        return v.indexOf('開源-JS-000') < 0 //剔除自己
+        return v.indexOf('開源-JS-000-0-w-pksbatch') < 0 //剔除自己
     })
     // console.log('fds', fds)
 

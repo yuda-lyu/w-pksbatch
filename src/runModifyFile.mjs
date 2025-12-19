@@ -25,19 +25,6 @@ function runModifyFile() {
         fdHook: (fdShell, fdPrj) => {
 
 
-            // //fn, 存放專案資料夾下的script.txt
-            // let fn = path.resolve(fdShell, 'script.txt')
-            // //deleteLineInFile(fn, '#npm update', { log: true })
-            // replaceLineInFile(fn, (line) => {
-            //     let find = `--experimental-modules`
-            //     let repl = `--experimental-modules`
-            //     if (line.indexOf(find) >= 0 && line.indexOf(repl) < 0) {
-            //         line = line.replace(find, repl)
-            //     }
-            //     return line
-            // }, { log: true })
-
-
             //fn, 存放專案資料夾下的script.txt移至專案資料夾內
             let fnSrc = path.resolve(fdShell, 'script.txt')
             let fnTar = path.resolve(fdPrj, 'script.txt')
@@ -86,9 +73,9 @@ function runModifyFile() {
             //     // let find = `"test": "./node_modules/.bin/mocha --require @babel/register",`
             //     // let repl = `"test": "mocha --parallel --timeout 60000 --require @babel/register",` //node15之後改回來自動偵測./node_modules/.bin執行
             //     // let find = `"test": "./node_modules/.bin/mocha --timeout 60000 --require @babel/register",`
-            //     // let repl = `"test": "mocha --parallel --timeout 60000 --experimental-modules",`
+            //     // let repl = `"test": "mocha --parallel --timeout 60000",`
             //     let find = `"test": "mocha --parallel --timeout 60000 --require @babel/register",`
-            //     let repl = `"test": "mocha --parallel --timeout 60000 --experimental-modules",`
+            //     let repl = `"test": "mocha --parallel --timeout 60000",`
             //     if (line.indexOf(find) >= 0) {
             //         line = line.replace(find, repl)
             //     }

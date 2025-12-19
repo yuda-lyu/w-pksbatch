@@ -10,4 +10,4 @@ runOverwriteFile()
 // runModEs6Import()
 
 
-//node --experimental-modules g.mjs
+//node g.mjs
