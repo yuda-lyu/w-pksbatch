@@ -8,6 +8,7 @@ import deleteLineInFile from './deleteLineInFile.mjs'
 import deleteLineInFiles from './deleteLineInFiles.mjs'
 import replaceLineInFile from './replaceLineInFile.mjs'
 import replaceLineInFiles from './replaceLineInFiles.mjs'
+import replaceContentInFile from './replaceContentInFile.mjs'
 
 
 function runModifyFile() {
@@ -25,15 +26,35 @@ function runModifyFile() {
         fdHook: (fdShell, fdPrj) => {
 
 
-            //fn, 存放專案資料夾下的script.txt移至專案資料夾內
-            let fnSrc = path.resolve(fdShell, 'script.txt')
-            let fnTar = path.resolve(fdPrj, 'script.txt')
-            if (w.fsIsFile(fnSrc)) {
-                try {
-                    w.fsRenameFile(fnSrc, fnTar)
+            //fn, 專案資料夾下的.gitignore
+            let fn = path.resolve(fdPrj, '.gitignore')
+            replaceContentInFile(fn, (cont) => {
+                let t
+
+                t = `.claude`
+                if (cont.indexOf(t) < 0) {
+                    cont = cont.replace('node_modules', `node_modules\n${t}`)
                 }
-                catch (err) {}
-            }
+
+                t = `.opencode`
+                if (cont.indexOf(t) < 0) {
+                    cont = cont.replace('node_modules', `node_modules\n${t}`)
+                }
+
+                return cont
+            }, { log: true })
+
+
+            // //fn, 存放專案資料夾下的script.txt移至專案資料夾內
+            // let fnSrc = path.resolve(fdShell, 'script.txt')
+            // let fnTar = path.resolve(fdPrj, 'script.txt')
+            // if (w.fsIsFile(fnSrc)) {
+            //     try {
+            //         w.fsRenameFile(fnSrc, fnTar)
+            //     }
+            //     catch (err) {}
+            // }
+
 
             // //fns, 套件資料夾下全部rollup檔案
             // let fns = w.fsGetFilesInFolder(fdPrj)

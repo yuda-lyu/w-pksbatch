@@ -2,9 +2,9 @@ import _ from 'lodash-es'
 import replaceLineInFile from './replaceLineInFile.mjs'
 
 
-function replaceLineInFiles(fns, lineReplace, opt = {}) {
+function replaceLineInFiles(fns, funReplace, opt = {}) {
     _.each(fns, (fn) => {
-        replaceLineInFile(fn, lineReplace, opt)
+        replaceLineInFile(fn, funReplace, opt)
     })
 }
 

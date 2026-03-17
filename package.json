@@ -29,11 +29,11 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-standard": "^4.1.0",
     "eslint-plugin-vue": "^9.10.0",
-    "iconv-lite": "^0.6.3",
-    "isutf8": "^4.0.0",
-    "lodash-es": "^4.17.21",
+    "iconv-lite": "^0.7.2",
+    "isutf8": "^4.0.1",
+    "lodash-es": "^4.17.23",
     "vue-eslint-parser": "^9.1.0",
-    "wsemi": "^1.7.79"
+    "wsemi": "^1.8.43"
   },
   "author": "yuda-lyu(semisphere)",
   "license": "MIT"

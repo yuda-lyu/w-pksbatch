@@ -2,7 +2,7 @@ import fs from 'fs'
 import _ from 'lodash-es'
 
 
-function replaceLineInFile(fn, funReplace, opt = {}) {
+function replaceContentInFile(fn, funReplace, opt = {}) {
 
     //check
     if (!fs.existsSync(fn)) {
@@ -12,22 +12,16 @@ function replaceLineInFile(fn, funReplace, opt = {}) {
     //read
     let hOld = fs.readFileSync(fn, 'utf8')
 
-    //split
-    let s = _.split(hOld, '\r\n')
-
-    //map, 找尋文字
-    s = _.map(s, (line) => {
-        if (_.isFunction(funReplace)) {
-            line = funReplace(line)
-        }
-        return line
-    })
-
-    //join
-    let hNew = _.join(s, '\r\n')
+    //funReplace
+    let hNew = hOld
+    if (_.isFunction(funReplace)) {
+        hNew = funReplace(hOld)
+    }
 
     //modify
     if (hOld !== hNew) {
+        // console.log('hOld', hOld)
+        // console.log('hNew', hNew)
 
         //write
         fs.writeFileSync(fn, hNew, 'utf8')
@@ -42,4 +36,4 @@ function replaceLineInFile(fn, funReplace, opt = {}) {
 }
 
 
-export default replaceLineInFile
+export default replaceContentInFile
