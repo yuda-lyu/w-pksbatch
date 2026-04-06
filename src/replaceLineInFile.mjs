@@ -15,13 +15,19 @@ function replaceLineInFile(fn, funReplace, opt = {}) {
     //split
     let s = _.split(hOld, '\r\n')
 
-    //map, 找尋文字
-    s = _.map(s, (line) => {
-        if (_.isFunction(funReplace)) {
-            line = funReplace(line)
-        }
-        return line
-    })
+    //找尋取代文字, 若funReplace回傳null, 代表刪除該列
+    if (true) {
+        let _s = []
+        _.each(s, (line) => {
+            if (_.isFunction(funReplace)) {
+                line = funReplace(line)
+            }
+            if (line !== null) {
+                _s.push(line)
+            }
+        })
+        s = _s
+    }
 
     //join
     let hNew = _.join(s, '\r\n')

@@ -15,6 +15,8 @@ function runModifyFile() {
 
     //fds
     let fds = getFolders()
+    // console.log('fds', fds)
+    // return
 
     //scp
     let scp = ''
@@ -26,23 +28,23 @@ function runModifyFile() {
         fdHook: (fdShell, fdPrj) => {
 
 
-            //fn, 專案資料夾下的.gitignore
-            let fn = path.resolve(fdPrj, '.gitignore')
-            replaceContentInFile(fn, (cont) => {
-                let t
+            // //fn, 專案資料夾下的.gitignore
+            // let fn = path.resolve(fdPrj, '.gitignore')
+            // replaceContentInFile(fn, (cont) => {
+            //     let t
 
-                t = `.claude`
-                if (cont.indexOf(t) < 0) {
-                    cont = cont.replace('node_modules', `node_modules\n${t}`)
-                }
+            //     t = `.claude`
+            //     if (cont.indexOf(t) < 0) {
+            //         cont = cont.replace('node_modules', `node_modules\n${t}`)
+            //     }
 
-                t = `.opencode`
-                if (cont.indexOf(t) < 0) {
-                    cont = cont.replace('node_modules', `node_modules\n${t}`)
-                }
+            //     t = `.opencode`
+            //     if (cont.indexOf(t) < 0) {
+            //         cont = cont.replace('node_modules', `node_modules\n${t}`)
+            //     }
 
-                return cont
-            }, { log: true })
+            //     return cont
+            // }, { log: true })
 
 
             // //fn, 存放專案資料夾下的script.txt移至專案資料夾內
@@ -86,22 +88,21 @@ function runModifyFile() {
             // }, { log: true })
 
 
-            // //fn, 專案資料夾下的package.json
-            // let fn = path.resolve(fdPrj, 'package.json')
-            // replaceLineInFile(fn, (line) => {
-            //     // let find = `"test": "mocha --require @babel/register",`
-            //     // let repl = `"test": "./node_modules/.bin/mocha --require @babel/register",` //node14之前得要用./node_modules/.bin執行
-            //     // let find = `"test": "./node_modules/.bin/mocha --require @babel/register",`
-            //     // let repl = `"test": "mocha --parallel --timeout 60000 --require @babel/register",` //node15之後改回來自動偵測./node_modules/.bin執行
-            //     // let find = `"test": "./node_modules/.bin/mocha --timeout 60000 --require @babel/register",`
-            //     // let repl = `"test": "mocha --parallel --timeout 60000",`
-            //     let find = `"test": "mocha --parallel --timeout 60000 --require @babel/register",`
-            //     let repl = `"test": "mocha --parallel --timeout 60000",`
-            //     if (line.indexOf(find) >= 0) {
-            //         line = line.replace(find, repl)
-            //     }
-            //     return line
-            // }, { log: true })
+            //fn, 專案資料夾下的package.json
+            let fn = path.resolve(fdPrj, 'package.json')
+            replaceContentInFile(fn, (cont) => {
+                let obj = JSON.parse(cont)
+                _.each([obj.dependencies, obj.devDependencies], (dep) => {
+                    if (dep) {
+                        if (dep['eslint-plugin-node']) {
+                            dep['eslint-plugin-n'] = '^17.24.0'
+                            delete dep['eslint-plugin-node']
+                        }
+                        delete dep['eslint-plugin-standard']
+                    }
+                })
+                return JSON.stringify(obj, null, 2).replace(/\n/g, '\r\n') + '\r\n'
+            }, { log: true })
 
 
         },
