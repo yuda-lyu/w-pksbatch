@@ -94,11 +94,19 @@ function runModifyFile() {
                 let obj = JSON.parse(cont)
                 _.each([obj.dependencies, obj.devDependencies], (dep) => {
                     if (dep) {
+                        if (dep['eslint-plugin-standard']) {
+                            delete dep['eslint-plugin-standard']
+                        }
                         if (dep['eslint-plugin-node']) {
-                            dep['eslint-plugin-n'] = '^17.24.0'
+                            dep['eslint-plugin-n'] = '^16.6.2'
                             delete dep['eslint-plugin-node']
                         }
-                        delete dep['eslint-plugin-standard']
+                        if (dep['eslint-config-standard']) {
+                            dep['eslint-config-standard'] = '^17.1.0'
+                        }
+                        if (dep['eslint-plugin-n']) {
+                            dep['eslint-plugin-n'] = '^16.6.2'
+                        }
                     }
                 })
                 return JSON.stringify(obj, null, 2).replace(/\n/g, '\r\n') + '\r\n'
