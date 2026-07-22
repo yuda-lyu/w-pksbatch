@@ -4,8 +4,8 @@ import runDeleteFile from './src/runDeleteFile.mjs'
 import runModEs6Import from './src/runModEs6Import.mjs'
 
 
-// runModifyFile()
-runOverwriteFile()
+runModifyFile()
+// runOverwriteFile()
 // runDeleteFile()
 // runModEs6Import()
 

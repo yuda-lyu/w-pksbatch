@@ -27,10 +27,10 @@
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-promise": "^6.1.1",
-    "iconv-lite": "^0.7.2",
+    "iconv-lite": "^0.7.3",
     "isutf8": "^4.0.1",
     "lodash-es": "^4.18.1",
-    "wsemi": "^1.8.47"
+    "wsemi": "^1.8.65"
   },
   "author": "yuda-lyu(semisphere)",
   "license": "MIT"

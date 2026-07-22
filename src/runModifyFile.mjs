@@ -28,23 +28,48 @@ function runModifyFile() {
         fdHook: (fdShell, fdPrj) => {
 
 
-            // //fn, 專案資料夾下的.gitignore
-            // let fn = path.resolve(fdPrj, '.gitignore')
-            // replaceContentInFile(fn, (cont) => {
-            //     let t
+            //fn, 專案資料夾下的.gitignore
+            let fn = path.resolve(fdPrj, '.gitignore')
+            replaceContentInFile(fn, (cont) => {
 
-            //     t = `.claude`
-            //     if (cont.indexOf(t) < 0) {
-            //         cont = cont.replace('node_modules', `node_modules\n${t}`)
-            //     }
+                //ts, 欲加入.gitignore的項目
+                let ts = [
+                    `.claude`,
+                    `.opencode`,
+                    `.agents`,
+                    `CLAUDE.md`,
+                    `AGENTS.md`,
+                    `.env`,
+                    `tmp`,
+                ]
 
-            //     t = `.opencode`
-            //     if (cont.indexOf(t) < 0) {
-            //         cont = cont.replace('node_modules', `node_modules\n${t}`)
-            //     }
+                //lines
+                let lines = cont.split('\n')
 
-            //     return cont
-            // }, { log: true })
+                //miss, 逐行精確比對(去除前後空白與\r)後仍缺少的項目
+                let miss = _.filter(ts, (t) => {
+                    return !_.some(lines, (line) => {
+                        return _.trim(line) === t
+                    })
+                })
+
+                //插入至node_modules行之後,無則附加於末尾
+                if (!_.isEmpty(miss)) {
+                    let idx = _.findIndex(lines, (line) => {
+                        return _.trim(line) === 'node_modules'
+                    })
+                    if (idx >= 0) {
+                        lines.splice(idx + 1, 0, ...miss)
+                    }
+                    else {
+                        lines = lines.concat(miss)
+                    }
+                }
+
+                cont = lines.join('\n')
+
+                return cont
+            }, { log: true })
 
 
             // //fn, 存放專案資料夾下的script.txt移至專案資料夾內
@@ -88,29 +113,29 @@ function runModifyFile() {
             // }, { log: true })
 
 
-            //fn, 專案資料夾下的package.json
-            let fn = path.resolve(fdPrj, 'package.json')
-            replaceContentInFile(fn, (cont) => {
-                let obj = JSON.parse(cont)
-                _.each([obj.dependencies, obj.devDependencies], (dep) => {
-                    if (dep) {
-                        if (dep['eslint-plugin-standard']) {
-                            delete dep['eslint-plugin-standard']
-                        }
-                        if (dep['eslint-plugin-node']) {
-                            dep['eslint-plugin-n'] = '^16.6.2'
-                            delete dep['eslint-plugin-node']
-                        }
-                        if (dep['eslint-config-standard']) {
-                            dep['eslint-config-standard'] = '^17.1.0'
-                        }
-                        if (dep['eslint-plugin-n']) {
-                            dep['eslint-plugin-n'] = '^16.6.2'
-                        }
-                    }
-                })
-                return JSON.stringify(obj, null, 2).replace(/\n/g, '\r\n') + '\r\n'
-            }, { log: true })
+            // //fn, 專案資料夾下的package.json
+            // let fn = path.resolve(fdPrj, 'package.json')
+            // replaceContentInFile(fn, (cont) => {
+            //     let obj = JSON.parse(cont)
+            //     _.each([obj.dependencies, obj.devDependencies], (dep) => {
+            //         if (dep) {
+            //             if (dep['eslint-plugin-standard']) {
+            //                 delete dep['eslint-plugin-standard']
+            //             }
+            //             if (dep['eslint-plugin-node']) {
+            //                 dep['eslint-plugin-n'] = '^16.6.2'
+            //                 delete dep['eslint-plugin-node']
+            //             }
+            //             if (dep['eslint-config-standard']) {
+            //                 dep['eslint-config-standard'] = '^17.1.0'
+            //             }
+            //             if (dep['eslint-plugin-n']) {
+            //                 dep['eslint-plugin-n'] = '^16.6.2'
+            //             }
+            //         }
+            //     })
+            //     return JSON.stringify(obj, null, 2).replace(/\n/g, '\r\n') + '\r\n'
+            // }, { log: true })
 
 
         },

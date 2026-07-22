@@ -4,9 +4,10 @@ import w from 'wsemi'
 
 function getFolders() {
 
-    //pfd
-    let pfd = 'D:\\- 006 -        開源\\'
-
+    //pfd //[tag:換位置時要調整]
+    // let pfd = 'D:\\- 006 -        開源\\'
+    let pfd = 'C:\\opensrc\\'
+    
     //vfds
     let vfdsp = w.fsGetFoldersInFolder(pfd)
     let fds = _.map(vfdsp, 'path')
@@ -16,6 +17,9 @@ function getFolders() {
         // console.log('v', v)
         return v.indexOf('開源-JS-') >= 0
     })
+    // fds=[
+    //     'C:\\opensrc\\開源-JS-002-3-wsemi',
+    // ]
     fds = _.filter(fds, (v) => {
         return v.indexOf('開源-JS-000-0-w-pksbatch') < 0 //剔除自己
     })
