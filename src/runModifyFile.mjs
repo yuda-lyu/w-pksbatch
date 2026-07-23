@@ -113,29 +113,35 @@ function runModifyFile() {
             // }, { log: true })
 
 
-            // //fn, 專案資料夾下的package.json
-            // let fn = path.resolve(fdPrj, 'package.json')
-            // replaceContentInFile(fn, (cont) => {
-            //     let obj = JSON.parse(cont)
-            //     _.each([obj.dependencies, obj.devDependencies], (dep) => {
-            //         if (dep) {
-            //             if (dep['eslint-plugin-standard']) {
-            //                 delete dep['eslint-plugin-standard']
-            //             }
-            //             if (dep['eslint-plugin-node']) {
-            //                 dep['eslint-plugin-n'] = '^16.6.2'
-            //                 delete dep['eslint-plugin-node']
-            //             }
-            //             if (dep['eslint-config-standard']) {
-            //                 dep['eslint-config-standard'] = '^17.1.0'
-            //             }
-            //             if (dep['eslint-plugin-n']) {
-            //                 dep['eslint-plugin-n'] = '^16.6.2'
-            //             }
-            //         }
-            //     })
-            //     return JSON.stringify(obj, null, 2).replace(/\n/g, '\r\n') + '\r\n'
-            // }, { log: true })
+            //fn, 專案資料夾下的package.json
+            let fn2 = path.resolve(fdPrj, 'package.json')
+            replaceContentInFile(fn2, (cont) => {
+                let obj = JSON.parse(cont)
+                _.each([obj.dependencies, obj.devDependencies], (dep) => {
+                    if (dep) {
+                        if (dep['lodash-es']) {
+                            dep['lodash-es'] = '^4.18.1'
+                        }
+                        if (dep['playwright']) {
+                            dep['playwright'] = '^1.61.1'
+                        }
+                        if (dep['eslint-plugin-standard']) {
+                            delete dep['eslint-plugin-standard']
+                        }
+                        if (dep['eslint-plugin-node']) {
+                            dep['eslint-plugin-n'] = '^16.6.2'
+                            delete dep['eslint-plugin-node']
+                        }
+                        if (dep['eslint-config-standard']) {
+                            dep['eslint-config-standard'] = '^17.1.0'
+                        }
+                        if (dep['eslint-plugin-n']) {
+                            dep['eslint-plugin-n'] = '^16.6.2'
+                        }
+                    }
+                })
+                return JSON.stringify(obj, null, 2).replace(/\n/g, '\r\n') + '\r\n'
+            }, { log: true })
 
 
         },
