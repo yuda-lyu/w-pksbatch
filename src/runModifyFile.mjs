@@ -122,6 +122,9 @@ function runModifyFile() {
                         if (dep['lodash-es']) {
                             dep['lodash-es'] = '^4.18.1'
                         }
+                        if (dep['sharp']) {
+                            dep['sharp'] = '^0.35.3'
+                        }
                         if (dep['playwright']) {
                             dep['playwright'] = '^1.61.1'
                         }
