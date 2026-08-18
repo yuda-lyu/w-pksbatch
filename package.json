@@ -29,7 +29,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "iconv-lite": "^0.7.3",
     "isutf8": "^4.0.1",
-    "wsemi": "^1.8.65"
+    "wsemi": "^1.8.76"
   },
   "author": "yuda-lyu(semisphere)",
   "license": "MIT"
