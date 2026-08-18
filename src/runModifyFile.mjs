@@ -125,8 +125,11 @@ function runModifyFile() {
                         if (dep['sharp']) {
                             dep['sharp'] = '^0.35.3'
                         }
+                        // if (dep['vue']) { 
+                        //     dep['vue'] = '^2.7.16' //已先調整完故不開啟
+                        // }
                         if (dep['playwright']) {
-                            dep['playwright'] = '^1.61.1'
+                            dep['playwright'] = '^1.62.1'
                         }
                         if (dep['eslint-plugin-standard']) {
                             delete dep['eslint-plugin-standard']

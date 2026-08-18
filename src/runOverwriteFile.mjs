@@ -23,6 +23,12 @@ function runOverwriteFile() {
             console.log('fdPrj', fdPrj)
 
 
+            //fnSrc, 覆蓋.editorconfig
+            let fnSrc = '.editorconfig'
+            let fpTar = path.resolve(fdPrj, fnSrc)
+            overwriteFile(fnSrc, fpTar, { log: true, needExistTar: false })
+
+
             // //fnSrc, 覆蓋.eslintignore
             // let fnSrc = '.eslintignore'
             // let fpTar = path.resolve(fdPrj, fnSrc)
@@ -53,10 +59,10 @@ function runOverwriteFile() {
             // overwriteFile(fnSrc, fpTar, { log: true, needExistTar: false })
 
 
-            //fnSrc, 覆蓋./.github/workflows/ci-test.yml
-            let fnSrc = `ci-test.yml`
-            let fpTar = path.resolve(fdPrj, `./.github/workflows/${fnSrc}`)
-            overwriteFile(fnSrc, fpTar, { log: true, needExistTar: false })
+            // //fnSrc, 覆蓋./.github/workflows/ci-test.yml
+            // let fnSrc = `ci-test.yml`
+            // let fpTar = path.resolve(fdPrj, `./.github/workflows/${fnSrc}`)
+            // overwriteFile(fnSrc, fpTar, { log: true, needExistTar: false })
 
 
             // //fnSrc, 覆蓋SECURITY.md
